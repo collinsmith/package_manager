@@ -3,6 +3,8 @@
 #endif
 #define _curl_included
 
+#tryinclude <curl_consts>
+
 #if AMXX_VERSION_NUM >= 175
  #pragma reqlib curl
  #if !defined AMXMODX_NOAUTOLOAD
@@ -35,3 +37,6 @@ native curl_slist:curl_slist_append(curl_slist:list, buffer[]);
 native void:curl_slist_free_all(curl_slist:list);
 
 native void:curl_version(buf[], len);
+/* AMXX-Studio Notes - DO NOT MODIFY BELOW HERE
+*{\\ rtf1\\ ansi\\ deff0{\\ fonttbl{\\ f0\\ fnil Tahoma;}}\n\\ viewkind4\\ uc1\\ pard\\ lang1049\\ f0\\ fs16 \n\\ par }
+*/
