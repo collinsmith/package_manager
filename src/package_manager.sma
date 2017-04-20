@@ -178,7 +178,7 @@ public onPluginDownloaded(CURL: curl, CURLcode: code, data[]) {
   hash_file(path, Hash_Md5, hash, charsmax(hash));
   server_print("hash=%s", hash);
 
-  if (!isStringEmpty(checksum) && equal(hash, checksum)) {
+  if (!isStringEmpty(checksum) && equali(hash, checksum)) {
     server_print("hashes do not match, aborting...");
     return;
   }
