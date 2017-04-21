@@ -35,9 +35,8 @@ public plugin_init() {
   register_plugin("AMXX Package Manager", VERSION_STRING, "Tirant");
 
   createTmpDir();
-  new manifest[PLATFORM_MAX_PATH];
-  getPath(manifest, charsmax(manifest), AMXX_DATADIR, "manifest");
-  curl(MANIFEST_URL, manifest, "onManifestDownloaded");
+  resolvePath(TMP_DIR, charsmax(TMP_DIR), TMP_DIR_LENGTH, "manifest");
+  curl(MANIFEST_URL, TMP_DIR, "onManifestDownloaded");
 }
 
 stock getBuildId(buildId[], len) {
@@ -238,13 +237,11 @@ public native_processManifest(plugin, numParams) {
   new url[256], len;
   len = get_string(1, url, charsmax(url));
 
-  new file[32];
-  new i = len - 1;
-  for (; i && url[i] != '/'; i--) {}
-  len = copy(file, charsmax(file), url[i + 1]);
-  formatex(file[len], charsmax(file) - len, "_%d", plugin);
+  new manifest[32];
+  len = getFileName(manifest, charsmax(manifest), url, len);
+  formatex(manifest[len], charsmax(manifest) - len, "_%d", plugin);
   
   createTmpDir();
-  resolvePath(TMP_DIR, charsmax(TMP_DIR), TMP_DIR_LENGTH, file);
+  resolvePath(TMP_DIR, charsmax(TMP_DIR), TMP_DIR_LENGTH, manifest);
   curl(url, TMP_DIR, "onManifestDownloaded");
 }
