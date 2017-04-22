@@ -3,8 +3,8 @@
 #include <logger>
 
 #pragma ctrlchar 94
-#include "../lib/curl/amx_includes/curl_consts.inc"
-#include "../lib/curl/amx_includes/curl.inc"
+#include "../lib/curl/curl_consts.inc"
+#include "../lib/curl/curl.inc"
 #pragma ctrlchar 92
 
 #include "include/stocks/param_stocks.inc"
